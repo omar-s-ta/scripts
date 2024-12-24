@@ -32,7 +32,7 @@ logger_get_level_number() {
   "WARN") echo "${G_LOG_LEVEL_WARN}" ;;
   "ERROR") echo "${G_LOG_LEVEL_ERROR}" ;;
   *)
-    plog ERROR "Invalid log level: $1"
+    echo "ERROR: Invalid log level: $1" >&2
     exit 1
     ;;
   esac
