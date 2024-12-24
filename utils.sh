@@ -17,6 +17,13 @@ source "${SCRIPT_DIR}/logger.sh"
 ## Please stick to the guidelines
 #####
 
+##### helper functions
+
+UTILS_TRUE=0
+UTILS_FALSE=1
+
+##### end of helper functions
+
 ## Requires `usage` function
 _parse_help_argument() {
   for arg in "$@"; do
@@ -31,7 +38,7 @@ _validate_positive_integer() {
   local var_value="${!var_name}"
   if ! [[ $var_value =~ ^[1-9][0-9]*$ ]]; then
     log ERROR "${var_name} is not a positive integer"
-    return 1
+    return $UTILS_FALSE
   fi
 }
 
@@ -40,7 +47,7 @@ _validate_integer() {
   local var_value="${!var_name}"
   if ! [[ $var_value =~ ^[0-9]+$ ]]; then
     log ERROR "${var_name} is not an integer"
-    return 1
+    return $UTILS_FALSE
   fi
 }
 
@@ -49,7 +56,7 @@ _validate_boolean() {
   local var_value="${!var_name}"
   if [[ "${var_value}" != "true" && "${var_value}" != "false" ]]; then
     log ERROR "${var_name} must be 'true' or 'false'. Got '${var_value}'."
-    return 1
+    return $UTILS_FALSE
   fi
 }
 
@@ -57,7 +64,7 @@ _validate_required() {
   local var_name="$1"
   if [ -z "${!var_name+x}" ]; then
     log ERROR "--${var_name} is required."
-    return 1
+    return $UTILS_FALSE
   fi
 }
 
@@ -65,7 +72,7 @@ _validate_is_set() {
   local var_name="$1"
   if [ -z "${!var_name}" ]; then
     log ERROR "'${var_name}' function parameter is required."
-    return 1
+    return $UTILS_FALSE
   fi
 }
 
@@ -73,8 +80,8 @@ _confirm_action() {
   local prompt=$1
   read -rp "${prompt} [y/N] " choice
   case "$choice" in
-  y | Y) return 0 ;;
-  *) return 1 ;;
+  y | Y) return $UTILS_TRUE ;;
+  *) return $UTILS_FALSE ;;
   esac
 }
 
