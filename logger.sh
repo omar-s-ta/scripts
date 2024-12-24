@@ -8,8 +8,6 @@
 ## Prefix all helper functions with `logger_` to avoid name clashes with other scripts
 #####
 
-
-
 ##### globals
 
 : "${G_LOG_LEVEL_DEBUG:=0}"
@@ -19,7 +17,6 @@
 
 ##### end of globals
 
-
 ##### helper functions
 
 logger_to_upper() {
@@ -28,19 +25,18 @@ logger_to_upper() {
 
 logger_get_level_number() {
   case "$(logger_to_upper "$1")" in
-    "DEBUG") echo "${G_LOG_LEVEL_DEBUG}" ;;
-    "INFO")  echo "${G_LOG_LEVEL_INFO}"  ;;
-    "WARN")  echo "${G_LOG_LEVEL_WARN}"  ;;
-    "ERROR") echo "${G_LOG_LEVEL_ERROR}" ;;
-    *)
-      plog ERROR "Invalid log level: $1"
-      exit 1
-      ;;
+  "DEBUG") echo "${G_LOG_LEVEL_DEBUG}" ;;
+  "INFO") echo "${G_LOG_LEVEL_INFO}" ;;
+  "WARN") echo "${G_LOG_LEVEL_WARN}" ;;
+  "ERROR") echo "${G_LOG_LEVEL_ERROR}" ;;
+  *)
+    plog ERROR "Invalid log level: $1"
+    exit 1
+    ;;
   esac
 }
 
 ##### end of helper functions
-
 
 ## Tags the message to stdout with the current timestamp and log level
 ## Useful for simple logging where you do not want to filter logs based on log level
@@ -55,7 +51,8 @@ plog() {
 ## export LOG_LEVEL=DEBUG
 ## Usage: log <level> <message>
 log() {
-  local level=$(logger_to_upper "$1")
+  local level
+  level=$(logger_to_upper "$1")
   local current_level=${LOG_LEVEL:-"INFO"}
   shift
 
