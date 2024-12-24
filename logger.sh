@@ -5,7 +5,9 @@
 ## The log level can be set using the LOG_LEVEL environment variable
 ## The log levels are DEBUG, INFO, WARN, ERROR
 ##
-## Prefix all helper functions with `logger_` to avoid name clashes with other scripts
+## NOTE:
+## * Prefix all helper functions with `logger_` to avoid name clashes with other scripts
+##
 #####
 
 ##### globals
