@@ -82,3 +82,8 @@ _trap_kill_pid() {
   local pid=$1
   trap "kill $pid" SIGINT SIGTERM ERR EXIT
 }
+
+_colorize_output() {
+  "$@" 1> >(sed $'s/^/\x1b[32m/;s/$/\x1b[0m/') \
+  2> >(sed $'s/^/\x1b[31m/;s/$/\x1b[0m/' >&2)
+}
