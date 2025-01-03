@@ -64,11 +64,13 @@ git_commit_set_upstream() {
 }
 
 git_add_commit_push() {
-  git commit -am "$1"
+  git add .
+  git commit -m "$1"
   git push
 }
 
 git_add_commit_set_upstream() {
-  git commit -am "$1"
+  git add .
+  git commit -m "$1"
   git_set_upstream
 }
