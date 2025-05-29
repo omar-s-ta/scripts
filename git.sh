@@ -21,56 +21,56 @@ GIT_UTILS_FALSE=1
 ##### end of helper functions
 
 git_main() {
-  git checkout main
-  git pull
+	git checkout main
+	git pull
 }
 
 git_master() {
-  git checkout master
-  git pull
+	git checkout master
+	git pull
 }
 
 ## Can be used with zsh change-working-directory `chpwd` hook
 git_is_default_branch() {
-  local _branch_name="$1"
-  local -r default_branches=("main" "master")
+	local _branch_name="$1"
+	local -r default_branches=("main" "master")
 
-  for branch in "${default_branches[@]}"; do
-    if [[ "$_branch_name" == "$branch" ]]; then
-      return $GIT_UTILS_TRUE
-    fi
-  done
+	for branch in "${default_branches[@]}"; do
+		if [[ "$_branch_name" == "$branch" ]]; then
+			return $GIT_UTILS_TRUE
+		fi
+	done
 
-  return $GIT_UTILS_FALSE
+	return $GIT_UTILS_FALSE
 }
 
 git_set_upstream() {
-  git push --set-upstream origin "$(git branch --show-current)"
+	git push --set-upstream origin "$(git branch --show-current)"
 }
 
 git_link_local_to_upstream() {
-  local remote_branch_name="$1"
-  git branch --set-upstream-to=origin/"$remote_branch_name"
+	local remote_branch_name="$1"
+	git branch --set-upstream-to=origin/"$remote_branch_name"
 }
 
 git_commit_push() {
-  git commit -m "$1"
-  git push
+	git commit -m "$1"
+	git push
 }
 
 git_commit_set_upstream() {
-  git commit -m "$1"
-  git_set_upstream
+	git commit -m "$1"
+	git_set_upstream
 }
 
 git_add_commit_push() {
-  git add .
-  git commit -m "$1"
-  git push
+	git add .
+	git commit -m "$1"
+	git push
 }
 
 git_add_commit_set_upstream() {
-  git add .
-  git commit -m "$1"
-  git_set_upstream
+	git add .
+	git commit -m "$1"
+	git_set_upstream
 }
