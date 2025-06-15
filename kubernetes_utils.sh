@@ -15,9 +15,8 @@
 ##### logger.sh
 ##### utils.sh
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${SCRIPT_DIR}/logger.sh"
-source "${SCRIPT_DIR}/utils.sh"
+. "${HOME}/scripts/logger.sh"
+. "${HOME}/scripts/utils.sh"
 
 ##### end of dependencies
 
