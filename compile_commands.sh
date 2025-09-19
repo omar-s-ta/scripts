@@ -25,8 +25,6 @@ cr_cmd_cpp() {
   local version="$1"
   local name="$2"
 
-  _validate_positive_integer version || return 1
-
   if [[ -f "$name".cpp ]]; then
     g++ -g -std=c++"$version" -Wall "$name".cpp -o "$name"
   else
