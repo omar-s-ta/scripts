@@ -28,7 +28,7 @@ cr_cmd_cpp() {
   _validate_positive_integer version || return 1
 
   if [[ -f "$name".cpp ]]; then
-    g++ -std=c++"$version" -g -Wall "$name".cpp -o "$name"
+    g++ -g -std=c++"$version" -Wall "$name".cpp -o "$name"
   else
     echo "File $name does not exist"
     return 1
