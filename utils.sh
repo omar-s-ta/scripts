@@ -38,7 +38,10 @@ _parse_help_argument() {
 
 _validate_positive_integer() {
   local var_name="$1"
+
+  ## TODO: Make it shell-agnostic, same for every other instance.
   local var_value="${!var_name}"
+
   if ! [[ $var_value =~ ^[1-9][0-9]*$ ]]; then
     log ERROR "${var_name} is not a positive integer"
     return $UTILS_FALSE
