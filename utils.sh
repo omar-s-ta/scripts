@@ -100,3 +100,7 @@ _colorize_output() {
   "$@" 1> >(sed $'s/^/\x1b[32m/;s/$/\x1b[0m/') \
   2> >(sed $'s/^/\x1b[31m/;s/$/\x1b[0m/' >&2)
 }
+
+_self_task() {
+  echo "- [ ] #s-task $1" >>"$HOME/omar.abdelrahman.de@gmail.com - Google Drive/My Drive/obsidian-vault/00-09 Administration/02 Tasks/02.00 Tasks.md"
+}
