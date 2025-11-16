@@ -18,7 +18,7 @@
 #####
 
 cr_cmd_rust_competitive_manifest() {
-  cargo run --color=always --bin "$1" --profile dev --manifest-path "$HOME/development/sebres/rust-competitive-programming/tasks/$1/Cargo.toml"
+  cargo run --color=always --bin "$1" --profile dev --manifest-path "$HOME/development/sebres/rust-solver/tasks/$1/Cargo.toml"
 }
 
 cr_cmd_cpp() {
