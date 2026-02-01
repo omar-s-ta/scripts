@@ -104,3 +104,28 @@ _colorize_output() {
 _self_task() {
   echo "- [ ] #s-task $1" >>"$HOME/omar.abdelrahman.de@gmail.com - Google Drive/My Drive/obsidian-vault/00-09 Administration/02 Tasks/02.00 Tasks.md"
 }
+
+# html2pdf - Convert HTML files to PDF using Chrome
+#
+# Usage: _html2pdf <input.html> [output.pdf]
+#
+# Arguments:
+#   input.html   Path to the HTML file to convert
+#   output.pdf   Optional output path (defaults to input filename with .pdf extension)
+#
+# Examples:
+#   _html2pdf document.html
+#   _html2pdf document.html ~/Downloads/document.pdf
+
+_html2pdf() {
+  if [ -z "$1" ]; then
+    echo "Usage: html2pdf <input.html> [output.pdf]"
+    return 1
+  fi
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+    --headless=new \
+    --disable-gpu \
+    --no-pdf-header-footer \
+    --print-to-pdf="${2:-${1%.html}.pdf}" \
+    "$1"
+}
