@@ -105,7 +105,7 @@ _self_task() {
   echo "- [ ] #s-task $1" >>"$HOME/omar.abdelrahman.de@gmail.com - Google Drive/My Drive/obsidian-vault/00-09 Administration/02 Tasks/02.00 Tasks.md"
 }
 
-# html2pdf - Convert HTML files to PDF using Chrome
+# _html2pdf - Convert HTML files to PDF using Chrome
 #
 # Usage: _html2pdf <input.html> [output.pdf]
 #
@@ -119,7 +119,7 @@ _self_task() {
 
 _html2pdf() {
   if [ -z "$1" ]; then
-    echo "Usage: html2pdf <input.html> [output.pdf]"
+    echo "Usage: _html2pdf <input.html> [output.pdf]"
     return 1
   fi
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
