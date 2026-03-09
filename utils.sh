@@ -129,3 +129,43 @@ _html2pdf() {
     --print-to-pdf="${2:-${1%.html}.pdf}" \
     "$1"
 }
+
+# _skillify - Symlink directories from a source directory to ~/.claude/skills
+#
+# Usage: _skillify <source_directory>
+#
+# Arguments:
+#   source_directory   Path to the directory containing skill directories to symlink
+#
+# Examples:
+#   _skillify ~/spellbook/skills
+
+_skillify() {
+  local source_dir="${1:?Usage: _skillify <source_directory>}"
+  local skills_dir="$HOME/.claude/skills"
+
+  if [ ! -d "$source_dir" ]; then
+    log ERROR "'${source_dir}' is not a directory."
+    return $UTILS_FALSE
+  fi
+
+  mkdir -p "$skills_dir"
+
+  for dir in "$source_dir"/*/; do
+    [ -d "$dir" ] || continue
+    local name
+    name="$(basename "$dir")"
+    local target="$skills_dir/$name"
+
+    if [ -L "$target" ]; then
+      log WARN "'${name}' already symlinked, skipping."
+      continue
+    elif [ -e "$target" ]; then
+      log WARN "'${name}' already exists and is not a symlink, skipping."
+      continue
+    fi
+
+    ln -s "${dir%/}" "$target"
+    log INFO "Linked '${name}' -> '${dir%/}'"
+  done
+}
