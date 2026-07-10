@@ -105,6 +105,23 @@ _self_task() {
   echo "- [ ] #s-task $1" >>"$HOME/omar.abdelrahman.de@gmail.com - Google Drive/My Drive/obsidian-vault/00-09 Administration/02 Tasks/02.00 Tasks.md"
 }
 
+# _have - Check whether a command is available on PATH
+#
+# Usage: _have <command>
+#
+# Arguments:
+#   command   Name of the command/executable to look for
+#
+# Returns: 0 if the command exists, non-zero otherwise (prints nothing)
+#
+# Examples:
+#   _have fzf && echo "fzf is installed"
+#   if ! _have jq; then echo "please install jq"; fi
+
+_have() {
+  command -v "$1" >/dev/null 2>&1;
+}
+
 # _html2pdf - Convert HTML files to PDF using Chrome
 #
 # Usage: _html2pdf <input.html> [output.pdf]
