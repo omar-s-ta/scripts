@@ -2,7 +2,7 @@
 
 ##### dependiencies: utils.sh
 
-. "${HOME}/scripts/utils.sh"
+. "${ZSH_SCRIPTS_DIR:-$HOME/.local/share/scripts}/utils.sh"
 
 ##### end of dependencies
 

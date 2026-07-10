@@ -15,7 +15,7 @@
 ## in each file), so alphabetical load order is safe.
 #####
 
-_zshrc_init_dir="${HOME}/scripts"
+_zshrc_init_dir="${ZSH_SCRIPTS_DIR:-$HOME/.local/share/scripts}"
 
 for _script in "${_zshrc_init_dir}"/*.sh; do
   case "${_script##*/}" in

@@ -2,7 +2,7 @@
 
 ##### dependiencies: logger.sh
 
-. "${HOME}/scripts/logger.sh"
+. "${ZSH_SCRIPTS_DIR:-$HOME/.local/share/scripts}/logger.sh"
 
 ##### end of dependencies
 

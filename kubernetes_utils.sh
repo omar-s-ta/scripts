@@ -15,8 +15,8 @@
 ##### logger.sh
 ##### utils.sh
 
-. "${HOME}/scripts/logger.sh"
-. "${HOME}/scripts/utils.sh"
+. "${ZSH_SCRIPTS_DIR:-$HOME/.local/share/scripts}/logger.sh"
+. "${ZSH_SCRIPTS_DIR:-$HOME/.local/share/scripts}/utils.sh"
 
 ##### end of dependencies
 
