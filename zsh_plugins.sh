@@ -53,5 +53,4 @@ plugins=(
   colored-man-pages
   command-not-found
   copypath
-  z
 )
